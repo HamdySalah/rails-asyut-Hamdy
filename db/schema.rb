@@ -10,7 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_27_172711) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_27_175332) do
+  create_table "editors_posts", id: false, force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "post_id"
+    t.index ["user_id", "post_id"], name: "index_editors_posts_on_user_id_and_post_id", unique: true
+  end
+
   create_table "posts", force: :cascade do |t|
     t.string "title"
     t.string "content"
